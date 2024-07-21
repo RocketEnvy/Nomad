@@ -1,7 +1,7 @@
 import sys
 import time
-#sys.path.append('/home/pi/MasterPi/')
-#import HiwonderSDK.Board as Board
+sys.path.append('/home/pi/MasterPi/')
+import HiwonderSDK.Board as Board
 
 from smbus2 import SMBus, i2c_msg
 import rclpy
@@ -15,7 +15,7 @@ class MinimalPublisherV2(Node):
 
     def __init__(self):
         super().__init__('minimal_publisher')
-        self.publisher_ = self.create_publisher(Range, 'topic', 10)
+        self.publisher_ = self.create_publisher(Range, '/topic', 10)
         timer_period = 1.5  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 0
@@ -34,7 +34,8 @@ class MinimalPublisherV2(Node):
         rangerRick.max_range=5.00
         #in meters
         #rangerRick.range=dist
-        rangerRick.range=self.getDistance()
+        #rangerRick.range=self.getDistance()
+        rangerRick.range=Board.getBattery()/100.0
 
         self.publisher_.publish(rangerRick)
         self.get_logger().info('Range: %f' % rangerRick.range)
