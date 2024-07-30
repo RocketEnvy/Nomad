@@ -1,5 +1,6 @@
 nomad_ws/build
 nomad_ws/log/**
+nomad_ws/install/**
 nomad_ws/devel/
 nomad_ws/logs/
 nomad_ws/build/

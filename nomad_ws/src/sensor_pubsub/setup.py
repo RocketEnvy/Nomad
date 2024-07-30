@@ -24,6 +24,8 @@ setup(
                         'listener = sensor_pubsub.subscriber_member_function:main',
                         'range_talker= sensor_pubsub.publisher_member_function_v2:main',
                         'range_listener= sensor_pubsub.subscriber_member_function_v2:main',
+                        'sonar_talker = sensor_pubsub.sonar_publisher:main',
+                        'battery_talker = sensor_pubsub.battery_publisher:main',
                     ],
     },
 )
